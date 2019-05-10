@@ -26,5 +26,8 @@ module EmsApp
       g.template_engine = nil
       g.test_framework :test_unit, :fixture => false
     end
+
+    # Necessary for Heroku integration
+    config.assets.initialize_on_precompile = false
   end
 end
