@@ -1,0 +1,27 @@
+%h1 Edit Student Record
+
+= form_for @student do |f|
+  .row
+    .three.columns
+      = f.label :first_name
+    .four.columns
+      = f.text_field :first_name, class: 'u-full-width'
+  .row
+    .three.columns
+      = f.label :last_name
+    .four.columns
+      = f.text_field :last_name, class: 'u-full-width'
+  .row
+    .three.columns
+      = f.label :state_id, 'State ID'
+    .four.columns
+      = f.text_field :state_id, class: 'u-full-width'
+  .row
+    .seven.columns
+      = f.submit 'Update Record', class: 'u-full-width'
+
+%h3 Delete Record
+%p Be careful! This cannot be undone.
+.row
+  .seven.columns
+    .button= link_to 'Delete Record', student_path(@student), method: :delete, data: {confirm: 'Are you sure?'}

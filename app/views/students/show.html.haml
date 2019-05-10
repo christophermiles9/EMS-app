@@ -1,0 +1,14 @@
+%h1 Student Record
+
+%h3 Personal Info
+.row
+  .three.columns First Name
+  .four.columns= @student.first_name
+.row
+  .three.columns Last Name
+  .four.columns= @student.last_name
+.row
+  .three.columns State ID
+  .four.columns= @student.state_id
+
+.button= link_to 'Edit Info', edit_student_path(@student)

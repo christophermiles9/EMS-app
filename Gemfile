@@ -23,6 +23,7 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rb-readline'
   # Remove spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
