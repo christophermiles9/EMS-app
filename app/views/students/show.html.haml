@@ -12,3 +12,43 @@
   .four.columns= @student.state_id
 
 .button= link_to 'Edit Info', edit_student_path(@student)
+
+%h3 Practical Exams
+- if @student.practical_exams.empty?
+  %p This student does not have any practical exams yet.
+- else
+  %table.u-full-width
+    %thead
+      %tr
+        %th Number
+        %th Name
+        %th View Practical Exam
+    %tbody
+      - @student.practical_exams.all.each do |practical_exam|
+        %tr
+          %td= practical_exam.number
+          %td= practical_exam.name
+          %td= link_to 'View', practical_exam_path(practical_exam)
+
+%h3 Start a New Practical Exam
+.row
+  .seven.columns= link_to '1 - Patient Assessment Medical', new_student_practical_exam_path(student_id: @student.id, exam_number: '1')
+.row
+  .seven.columns= link_to '2 - Patient Assessment Trauma', new_student_practical_exam_path(student_id: @student.id, exam_number: '2')
+.row
+  .seven.columns= link_to '3 - Cardiac Arrest Management AED', new_student_practical_exam_path(student_id: @student.id, exam_number: '3')
+.row
+  .seven.columns= link_to '4 - Bag-Valve-Mask Apneic with Pulse', new_student_practical_exam_path(student_id: @student.id, exam_number: '4')
+.row
+  .seven.columns= link_to '5A - Upper Airway Adjuncts & Suction', new_student_practical_exam_path(student_id: @student.id, exam_number: '5A')
+.row
+  .seven.columns= link_to '5B - Supplemental Oxygen Administration', new_student_practical_exam_path(student_id: @student.id, exam_number: '5B')
+.row
+  .seven.columns= link_to '5C - Bleeding Control / Shock Management', new_student_practical_exam_path(student_id: @student.id, exam_number: '5C')
+.row
+  .seven.columns= link_to '6A - Immobilization Skills Long Bone Injury', new_student_practical_exam_path(student_id: @student.id, exam_number: '6A')
+.row
+  .seven.columns= link_to '6B - Immobilization Skills Joint Injury', new_student_practical_exam_path(student_id: @student.id, exam_number: '6B')
+.row
+  .seven.columns= link_to '6C - Immobilization Skills Traction Splinting', new_student_practical_exam_path(student_id: @student.id, exam_number: '6C')
+

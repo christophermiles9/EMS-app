@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_163948) do
+ActiveRecord::Schema.define(version: 2019_05_10_191701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,33 @@ ActiveRecord::Schema.define(version: 2019_05_10_163948) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_instructors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_instructors_on_reset_password_token", unique: true
+  end
+
+  create_table "practical_exams", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.boolean "mandatory"
+    t.integer "time_limit"
+    t.date "date"
+    t.datetime "start_time"
+    t.datetime "stop_time"
+    t.integer "student_id"
+    t.integer "instructor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id", "instructor_id"], name: "index_practical_exams_on_student_id_and_instructor_id"
+  end
+
+  create_table "practical_skills", force: :cascade do |t|
+    t.string "text", null: false
+    t.boolean "critical"
+    t.boolean "critical_passed"
+    t.integer "points_possible"
+    t.integer "points_earned"
+    t.integer "practical_exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["practical_exam_id"], name: "index_practical_skills_on_practical_exam_id"
   end
 
   create_table "students", force: :cascade do |t|
